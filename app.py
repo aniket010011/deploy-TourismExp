@@ -1,6 +1,4 @@
 import streamlit as st
-import lightgbm
-import xgboost
 import pandas as pd
 import numpy as np
 import joblib
@@ -249,4 +247,5 @@ else:
     if st.button("Get Recommendations"):
         recs = hybrid_recommend(user_id, top_n=top_n)
         st.dataframe(recs.reset_index(drop=True))
+
 
