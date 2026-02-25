@@ -17,13 +17,13 @@ st.set_page_config(
 # =============================
 @st.cache_resource
 def load_artifacts():
-    reg_pipeline = joblib.load("artifacts/regression_pipeline.pkl")
-    clf_pipeline = joblib.load("artifacts/classification_pipeline.pkl")
-    label_encoder = joblib.load("artifacts/label_encoder.pkl")
-    tfidf = joblib.load("artifacts/tfidf_vectorizer.pkl")
-    item_features = joblib.load("artifacts/item_features.pkl")
-    rec_df = joblib.load("artifacts/rec_df.pkl")
-    item_id_to_pos = joblib.load("artifacts/item_id_to_pos.pkl")
+    reg_pipeline = joblib.load("regression_pipeline.pkl")
+    clf_pipeline = joblib.load("classification_pipeline.pkl")
+    label_encoder = joblib.load("label_encoder.pkl")
+    tfidf = joblib.load("tfidf_vectorizer.pkl")
+    item_features = joblib.load("item_features.pkl")
+    rec_df = joblib.load("rec_df.pkl")
+    item_id_to_pos = joblib.load("item_id_to_pos.pkl")
 
     # rebuild content matrix (lightweight at runtime)
     content_matrix = tfidf.transform(item_features["content"])
@@ -247,3 +247,4 @@ else:
     if st.button("Get Recommendations"):
         recs = hybrid_recommend(user_id, top_n=top_n)
         st.dataframe(recs.reset_index(drop=True))
+
